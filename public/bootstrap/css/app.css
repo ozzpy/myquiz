@@ -1,0 +1,20 @@
+a,
+a:hover {
+    text-decoration: none;
+}
+
+.barChart-1 {
+    background-color: #1E90FF ;    /** dodger blue*/
+}
+
+.barChart-2 {
+    background-color: #FF1493;    /** deep pink */
+}
+
+.barChart-3 {
+    background-color: #228B22;    /** forest green */
+}
+
+.barChart-4 {
+    background-color: #FFD700;    /** gold */
+}
