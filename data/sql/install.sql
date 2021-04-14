@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `user_auth` (
   `username`  VARCHAR(40)      NOT NULL,
   `email`     VARCHAR(128)     NOT NULL,
   `password`  VARCHAR(100)     NOT NULL,
-  `picture`   VARCHAR(255)     NOT NULL,
+  `picture`   VARCHAR(255)     NOT NULL DEFAULT 'avatar.jpg',
   `birthday`  DATE             NOT NULL,
   `gender`    ENUM('Female', 'Male', 'Other') NOT NULL,
   `role_id`   TINYINT(1)       NOT NULL DEFAULT '2',
