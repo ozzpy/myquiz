@@ -20,7 +20,7 @@ return [
             'admin_quiz' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route' => '/admin/quiz[/:action]',
+                    'route' => '/admin/quiz[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]+',
                         'id' => '[0-9]+',
@@ -127,6 +127,7 @@ return [
             /** quiz template map */
             'quiz/answer' => __DIR__ . '/../view/application/quiz/answer.phtml',
             'quiz/create' => __DIR__ . '/../view/application/quiz/create.phtml',
+            'quiz/delete' => __DIR__ . '/../view/application/quiz/delete.phtml',
             'quiz/index'  => __DIR__ . '/../view/application/quiz/index.phtml',
             'quiz/view'   => __DIR__ . '/../view/application/quiz/view.phtml',
             /** search template map */
