@@ -1,0 +1,25 @@
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="nav-scroller bg-white shadow-sm">
+            <nav class="nav nav-underline">
+                <a class="nav-link active" href="<?= $this->url('settings', ['action' => 'index']); ?>">Settings Dashboard</a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'email']); ?>">
+                    <?= $this->translate('Edit Email Address'); ?>
+                </a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'password']); ?>">
+                    <?= $this->translate('Edit Password'); ?>
+                </a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'upload']); ?>">
+                    <?= $this->translate('Upload Profile Picture'); ?>
+                </a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'username']); ?>">
+                    <?= $this->translate('Edit Username'); ?>
+                </a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'delete']); ?>">
+                    <?= $this->translate('Delete Account'); ?>
+                </a>
+            </nav>
+        </div>
+    </div>
+</div>

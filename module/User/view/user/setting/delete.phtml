@@ -1,0 +1,70 @@
+<?php
+
+$title = $this->translate('Delete Account');
+#meta keywords
+$this->headMeta()->appendName('keywords', 'Delete, Purge, Account');
+#meta description
+$this->headMeta()->appendName('description', 'Delete my account');
+#page title
+$this->headTitle($this->escapeHtml($title));
+
+$form = $this->form;
+$form->setAttribute('action', $this->url('settings', ['action' => 'delete']));
+$form->prepare();
+
+?>
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="nav-scroller bg-white shadow-sm">
+            <nav class="nav nav-underline">
+                <a class="nav-link active" href="<?= $this->url('settings', ['action' => 'index']); ?>">Settings Dashboard</a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'email']); ?>">
+                    <?= $this->translate('Edit Email Address'); ?>
+                </a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'password']); ?>">
+                    <?= $this->translate('Edit Password'); ?>
+                </a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'upload']); ?>">
+                    <?= $this->translate('Upload Profile Picture'); ?>
+                </a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'username']); ?>">
+                    <?= $this->translate('Edit Username'); ?>
+                </a>
+                <a class="nav-link" href="<?= $this->url('settings', ['action' => 'delete']); ?>">
+                    <?= $this->translate('Delete Account'); ?>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7 shadow-sm">
+
+            <h2 class="text-center mb-3 pt-2 text-muted">
+                <?= $this->translate('Delete My Account'); ?>
+            </h2>
+
+            <?= $this->form()->openTag($form); ?>
+
+            <p class="pt-2">
+                <?= $this->translate('Are you sure you want to delete your account? This action cannot be undone.'); ?>
+            </p>
+
+            <hr>
+
+            <div class="mb-3 float-left">
+                <div class="input-group">
+                    <?= $this->formSubmit($form->get('delete_account')->setValue('No')); ?>
+                </div>
+            </div>
+
+            <div class="mb-3 float-right">
+                <?= $this->formHidden($form->get('auth_id')->setValue($this->authHelper()->getAuthId())); ?>
+                <?= $this->formSubmit($form->get('delete_account')->setValue('Yes')); ?>
+            </div>
+
+            <?= $this->form()->closeTag(); ?>
+        </div>
+    </div>
+</div>
