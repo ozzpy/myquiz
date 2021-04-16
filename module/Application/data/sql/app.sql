@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `app_quizzes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `app_categories`;
-CREATE TABLE `app_categories` (
+CREATE TABLE IF NOT EXISTS `app_categories` (
   `category_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `category`    VARCHAR(40)      NOT NULL,
   PRIMARY KEY (`category_id`),
