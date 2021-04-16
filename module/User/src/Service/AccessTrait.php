@@ -49,7 +49,7 @@ trait AccessTrait
         $response->setStatusCode(403);
         $response->setReasonPhrase('Forbidden');
 
-        # custom handle the 403 error
+        # display the 403 error page
         return $mvcEvent->getViewModel()->setTemplate('error/403');
     }
 }
