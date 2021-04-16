@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 Unauthorized Access - MyQuiz</title>
+    <!-- Le styles -->
+    <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+            ->prependStylesheet($this->basePath('assets/css/app.css'))
+            ->prependStylesheet($this->basePath('assets/css/bootstrap.min.css'))
+    ?>
+</head>
+
+<body class="text-center">
+
+<header class="container mb-3">
+            <div class="pt-2 small">
+                <div class="d-flex">
+                    <div class="position-relative">
+                        <span class="text-muted">
+                            <?= date('l, j F, Y'); ?>
+                        </span>
+                    </div>
+
+                    <div class="ml-auto">
+                        <ul class="list-inline">
+                            <?php if(!$this->identity()): ?>
+                                <li class="list-inline-item">
+                                    <a href="<?= $this->url('signup'); ?>">
+                                        Join
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="<?= $this->url('login'); ?>">
+                                        Login
+                                    </a>
+                                </li>
+                            <?php else: ?>
+                                <li class="list-inline-item">
+                                    <?= $this->translate('Hello '); ?>
+                                    <a href="<?= $this->url(
+                                        'profile',
+                                        ['id' => $this->authHelper()->getAuthId(),
+                                         'username' => mb_strtolower(
+                                             $this->authHelper()->getUsername()
+                                         )]
+                                    ); ?>">
+                                        <?= $this->authHelper()->getUsername(); ?>
+                                    </a>
+                                </li>
+                                <?php if($this->authHelper()->getRoleId() == 1) { ?>
+                                    <li class="list-inline-item">
+                                        <a href="<?= $this->url('admin_user', ['action' => 'index']); ?>">
+                                            Admin
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <li class="list-inline-item">
+                                    <a href="<?= $this->url('settings',
+                                                            ['action' => 'index']);
+                                    ?>">
+                                        Settings
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="<?= $this->url('logout'); ?>">
+                                        Logout
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+
+                <div class="collapse navbar-collapse" id="navbarsExample09">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<?= $this->url('home');
+                            ?>">
+                                Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <?php if($this->identity()): ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="<?=
+                                $this->url('quiz', ['action' => 'index']); ?>"
+                                   id="quizDropdown"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true"
+                                   aria-expanded="false">Manage Quizzes</a>
+                                <div class="dropdown-menu"
+                                     aria-labelledby="quizDropdown">
+                                    <a class="dropdown-item"
+                                       href="<?= $this->url('quiz', ['action' =>
+                                                                      'create']); ?>">
+                                        Create A New Quiz
+                                    </a>
+                                    <a class="dropdown-item"
+                                       href="<?= $this->url('quiz', ['action' =>
+                                                                      'index']); ?>">
+                                        List All My Quizzes
+                                    </a>
+                                </div>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                    <form class="form-inline my-2 my-md-0">
+                        <input class="form-control" type="text"
+                               placeholder="Search the website..."
+                               aria-label="Search">
+                    </form>
+                </div>
+            </nav>
+        </header>
+
+    <main role="main" class="container pt-5">
+        <h1 class="text-danger pt-2">
+            403 - Access Denied
+        </h1>
+
+        <p class="text-muted">
+            You don't have authorization to access this page</p>
+        </p>
+
+        <p>
+            <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-sm">
+                Go back to the last page
+            </a>
+        </p>
+        <hr>
+    </main>
+
+    <footer class="my-2 text-muted text-center small">
+        <p class="mb-1">
+            <?= $this->translate('Copyright &copy; ' . date('Y') . '. All rights reserved.'); ?>
+        </p>
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="<?= $this->url('help', ['action' => 'contact']); ?>">
+                    <?= $this->translate('Contact'); ?>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="<?= $this->url('help', ['action' => 'privacy']); ?>">
+                    <?= $this->translate('Privacy'); ?>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="<?= $this->url('help', ['action' => 'terms']); ?>">
+                    <?= $this->translate('Terms'); ?>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+</body>
+</html>
