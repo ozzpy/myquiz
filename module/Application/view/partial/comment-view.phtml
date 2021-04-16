@@ -1,0 +1,59 @@
+<?php foreach ($this->comments as $comment): ?>
+<div class="w-lg-60 mx-auto">
+<div>
+    <div class="media mb-3 pt-3">
+        <div class="mr-3 pt-2">
+            <img class="img-fluid rounded-circle"
+                 src="<?= $this->basePath('images/avatars/'.
+                     $comment->getPicture());
+                 ?>"
+                 alt="<?= $comment->getUsername(); ?>'s photo"
+                 height="50px" width="50px">
+        </div>
+        <div class="media-body">
+            <h4 class="d-inline-block mb-1">
+                <a class="d-block h6 mb-0" href="<?= $this->url('profile', ['id' => $comment->getAuthId(), 'username' => strtolower($comment->getUsername())]);
+                ?>">
+                    <?= $this->escapeHtml($comment->getUsername()); ?>
+                </a>
+            </h4>
+            <time class="timeago d-block text-muted"
+                  datetime="<?= $comment->getCreated(); ?>"
+                  title="<?= $comment->getCreated(); ?>">
+                <?= $this->dateFormat(
+                    new DateTime($comment->getCreated()),
+                    IntlDateFormatter::LONG, # date
+                    IntlDateFormatter::MEDIUM, #time
+                    "en-us"
+                ); ?>
+            </time>
+        </div>
+    </div>
+
+    <p><?= $this->escapeHtml($comment->getComment()); ?></p>
+
+    <ul class="list-inline d-flex">
+        <li class="list-inline-item">
+            <a class="text-secondary" href="#">
+            </a>
+        </li>
+        <li class="list-inline-item ml-3">
+            <a href="#"></a>
+        </li>
+        <?php if($this->identity() && ($comment->getAuthId() ==
+                $this->authHelper()->getAuthId())): ?>
+        <li class="list-inline-item ml-auto">
+            <a class="text-secondary"
+               href="<?= $this->url('comment', ['action' => 'edit', 'id' => $comment->getCommentId()]); ?>">
+                <span class="far fa-comments mr-1"></span>
+                Edit
+            </a>
+            <a class="text-secondary" href="<?= $this->url('comment', ['action' => 'delete', 'id' => $comment->getCommentId()]); ?>">
+                <span class="far fa-comments mr-1"></span>
+                Delete
+            </a>
+        </li>
+        <?php endif; ?>
+    </ul>
+</div>
+<?php endforeach;
