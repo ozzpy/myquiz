@@ -168,7 +168,7 @@ class SettingController extends AbstractActionController
                         ->save(BASE_PATH . DS . 'images' . DS . 'avatars' . DS .
                                $name);
 
-                    # we want to delete the users current picture as long as it is not the default avatar.png
+                    # we want to delete the users current picture as long as it is not the default avatar.jpg
                     if ($this->authPlugin()->getPicture !== 'avatar.jpg') {
                         unlink(BASE_PATH . DS . 'images' . DS . 'avatars' .
                                DS . $this->authPlugin()->getPicture());
