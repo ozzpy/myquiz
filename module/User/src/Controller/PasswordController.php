@@ -101,7 +101,7 @@ class PasswordController extends AbstractActionController
 
 		$id = (int) $this->params()->fromRoute('id');
 		$token = (string) $this->params()->fromRoute('token');
-		$info = $this->authTable->fetchAccountById((int)$id);
+		$info = $this->authTable->fetchAccountByAuthId((int)$id);
 
 		if(empty($id) || empty($token) || !$info) {
 			return $this->notFoundAction(); # will display a 404 error
