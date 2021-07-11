@@ -82,7 +82,7 @@ class LoginController extends AbstractActionController
 
                     case Result::SUCCESS:
 
-                        if ($data['recall'] == 1) {
+                        if ($data['recall'] === 1) {
                             $ssm = new SessionManager();
                             $ttl = 1814400; # 21 days time to live
                             $ssm->rememberMe($ttl);
