@@ -121,7 +121,7 @@ class LoginController extends AbstractActionController
         return (new ViewModel(['form' => $loginForm]))->setTemplate('user/auth/login');
     }
 
-    private function preserveUrl(string $returnUrl = null)
+    private function preserveUrl(string $returnUrl)
     {
         if (empty($returnUrl)) {
             return $this->redirect()->refresh();
